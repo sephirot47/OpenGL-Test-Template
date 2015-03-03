@@ -1,0 +1,13 @@
+#version 130
+
+uniform float time;
+uniform mat4 transform, projection;
+
+in vec3 position;
+
+void main()  
+{  
+    gl_Position.xyz = position.xyz;
+    gl_Position.w = 1.0;
+}
+

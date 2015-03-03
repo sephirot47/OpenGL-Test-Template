@@ -1,7 +1,16 @@
 all: main.exe
 
-main.exe: main.cpp
-	g++ main.cpp -o main.exe -lGL -lGLU -lSDL2
+main.exe: main.o Shader.o ShaderProgram.o
+	g++ main.o Shader.o ShaderProgram.o -o main.exe -Iinclude -lGL -lGLU -lSDL2 -lGLEW
+
+main.o: src/main.cpp
+	g++ -c src/main.cpp -Iinclude -lGL -lGLU -lSDL2 -lGLEW
+
+Shader.o: src/Shader.cpp
+	g++ -c src/Shader.cpp -Iinclude -lGL -lGLU -lSDL2 -lGLEW
+
+ShaderProgram.o: src/ShaderProgram.cpp
+	g++ -c src/ShaderProgram.cpp -Iinclude -lGL -lGLU -lSDL2 -lGLEW
 
 clean:
 	rm -rf *.exe *.o
