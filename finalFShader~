@@ -1,0 +1,14 @@
+#version 130	
+
+uniform float time;
+uniform sampler2D renderedSceneTex;
+
+in vec2 fragCoord;
+
+void main()  
+{  
+    vec2 pix = vec2((fragCoord.x+1.0)/2.0, (fragCoord.y+1.0)/2.0);
+    //gl_FragColor = vec4(sin(time) * pix.x, cos(time) * pix.y, sin(time), 1.0); 
+    gl_FragColor = vec4(texture(renderedSceneTex, pix.xy).xyz, 1.0) * 0.5 + ; 
+}
+
